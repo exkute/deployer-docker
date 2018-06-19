@@ -20,7 +20,7 @@ RUN apt update -y && apt upgrade -y && \
     addgroup deployer && \
     adduser deployer --disabled-password --gecos '' --ingroup deployer && \
     mkdir -p /home/deployer/.ssh && \
-    echo -ne "Host *\n  StrictHostKeyChecking=no\n" > /home/deployer/.ssh/config && \
+    echo -e "Host *\n  StrictHostKeyChecking=no\n" > /home/deployer/.ssh/config && \
     chown -R deployer:deployer /home/deployer/.ssh && \
     rm -rf /var/lib/apt/lists/*
 
