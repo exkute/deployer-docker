@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 
 RUN apt update -y && apt upgrade -y && \
     apt install --no-install-recommends -y \
