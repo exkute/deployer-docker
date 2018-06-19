@@ -4,10 +4,11 @@ RUN apt update -y && apt upgrade -y && \
     apt install --no-install-recommends -y \
         curl \
         gpg \
+        openssh-client \
         gpg-agent \
         ca-certificates \
         git \
-	    git-crypt && \
+	git-crypt && \
     export CLOUD_SDK_REPO="cloud-sdk-stretch main" && \
     export APT_GOOGLE_CLOUD_SDK_FILE="/etc/apt/sources.list.d/google-cloud-sdk.list" && \
     echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO" | tee -a "$APT_GOOGLE_CLOUD_SDK_FILE" && \
