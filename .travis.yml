@@ -5,8 +5,8 @@ services:
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 script:
-  - docker build -t exkute/deployer:latest .
-  - if [ -z $TRAVIS_TAG ]; then docker build -t "exkute/deployer:$TRAVIS_TAG"; fi
+  - docker build --tag="exkute/deployer:latest" .
+  - if [ -n "$TRAVIS_TAG" ]; then docker build --tag="exkute/deployer:$TRAVIS_TAG"; fi
   - docker push exkute/deployer:latest
-  - if [ -z $TRAVIS_TAG ]; then docker push "exkute/deployer:$TRAVIS_TAG"; fi
+  - if [ -n "$TRAVIS_TAG" ]; then docker push "exkute/deployer:$TRAVIS_TAG"; fi
 
