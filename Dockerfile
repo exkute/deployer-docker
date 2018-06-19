@@ -20,10 +20,11 @@ RUN apt update -y && apt upgrade -y && \
     addgroup deployer && \
     adduser deployer --disabled-password --gecos '' --ingroup deployer && \
     mkdir -p /home/deployer/.ssh && \
-    chown -R deployer:deployer /home/deployer/.ssh && \
     rm -rf /var/lib/apt/lists/*
 
-USER deployer
 COPY ssh_config /home/deployer/.ssh/config
+RUN  chown -R deployer:deployer /home/deployer/.ssh
+
+USER deployer
 WORKDIR /home/deployer
 CMD ["/usr/bin/kustomize"]
