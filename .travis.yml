@@ -2,6 +2,7 @@ sudo: required
 services:
   - docker
 
+if: tag IS present
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 script:
