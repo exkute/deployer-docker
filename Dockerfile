@@ -4,6 +4,7 @@ RUN apt update -y && apt upgrade -y && \
     apt install --no-install-recommends -y \
         curl \
         gpg \
+        gpg-agent \
         ca-certificates \
 	    git-crypt && \
     export CLOUD_SDK_REPO="cloud-sdk-stretch main" && \
