@@ -20,10 +20,10 @@ RUN apt update -y && apt upgrade -y && \
     addgroup deployer && \
     adduser deployer --disabled-password --gecos '' --ingroup deployer && \
     mkdir -p /home/deployer/.ssh && \
-    echo -e "Host *\n  StrictHostKeyChecking=no\n" > /home/deployer/.ssh/config && \
     chown -R deployer:deployer /home/deployer/.ssh && \
     rm -rf /var/lib/apt/lists/*
 
 USER deployer
+COPY ssh_config /home/deployer/.ssh/config
 WORKDIR /home/deployer
 CMD ["/usr/bin/kustomize"]
