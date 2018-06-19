@@ -23,7 +23,8 @@ RUN apt update -y && apt upgrade -y && \
     rm -rf /var/lib/apt/lists/*
 
 COPY ssh_config /home/deployer/.ssh/config
-RUN  chown -R deployer:deployer /home/deployer/.ssh
+RUN chown -R deployer:deployer /home/deployer/.ssh && \
+    chmod -R 600 /home/deployer/.ssh
 
 USER deployer
 WORKDIR /home/deployer
