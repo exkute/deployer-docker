@@ -8,6 +8,7 @@ RUN apt update -y && apt upgrade -y && \
         gpg-agent \
         ca-certificates \
         git \
+        jq \
 	git-crypt && \
     export CLOUD_SDK_REPO="cloud-sdk-stretch main" && \
     export APT_GOOGLE_CLOUD_SDK_FILE="/etc/apt/sources.list.d/google-cloud-sdk.list" && \
