@@ -9,7 +9,10 @@ RUN apt update -y && apt upgrade -y && \
         ca-certificates \
         git \
         jq \
-	git-crypt && \
+        git-crypt \
+        sudo && \
+    sed -i 's/^%sudo.*/%sudo ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+    
     export CLOUD_SDK_REPO="cloud-sdk-stretch main" && \
     export APT_GOOGLE_CLOUD_SDK_FILE="/etc/apt/sources.list.d/google-cloud-sdk.list" && \
     echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO" | tee -a "$APT_GOOGLE_CLOUD_SDK_FILE" && \
@@ -19,7 +22,7 @@ RUN apt update -y && apt upgrade -y && \
     chmod +x /usr/bin/kustomize && \
     gcloud version && kubectl version --client && /usr/bin/kustomize version && \
     addgroup deployer && \
-    adduser deployer --disabled-password --gecos '' --ingroup deployer && \
+    adduser deployer --disabled-password --gecos '' --ingroup deployer --add_extra_groups sudo && \
     mkdir -p /home/deployer/.ssh && \
     rm -rf /var/lib/apt/lists/*
 
