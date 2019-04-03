@@ -18,6 +18,8 @@ RUN apt update -y && apt upgrade -y && \
     curl -s -L "https://github.com/kubernetes-sigs/kustomize/releases/download/v1.0.6/kustomize_1.0.6_linux_amd64" > /usr/bin/kustomize && \
     chmod +x /usr/bin/kustomize && \
     gcloud version && kubectl version --client && /usr/bin/kustomize version && \
+    curl -s -L "https://github.com/yanc0/untrak/releases/download/v0.1/untrak_linux_amd64_v0.1" > /usr/bin/untrak && \
+    chmod +x /usr/bin/untrak && \
     addgroup deployer && \
     adduser deployer --disabled-password --gecos '' --ingroup deployer && \
     mkdir -p /home/deployer/.ssh && \
