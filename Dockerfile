@@ -17,7 +17,7 @@ RUN apt update -y && apt upgrade -y && \
     echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO" | tee -a "$APT_GOOGLE_CLOUD_SDK_FILE" && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     apt update -y && apt-get install -y --no-install-recommends google-cloud-sdk kubectl  && \
-    curl -s -L "https://github.com/kubernetes-sigs/kustomize/releases/download/v2.0.3/kustomize_2.0.3_linux_amd64" > /usr/bin/kustomize && \
+    curl -s -L "https://github.com/kubernetes-sigs/kustomize/releases/download/v1.0.6/kustomize_1.0.6_linux_amd64" > /usr/bin/kustomize && \
     chmod +x /usr/bin/kustomize && \
     gcloud version && kubectl version --client && /usr/bin/kustomize version && \
     addgroup deployer && \
