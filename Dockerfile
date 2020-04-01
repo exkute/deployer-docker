@@ -20,12 +20,12 @@ RUN apt update -y && apt upgrade -y && \
     echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a "$APT_KUBERNETES_FILE" && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \    
     apt update -y && apt-get install -y --no-install-recommends google-cloud-sdk kubectl=1.11.2-00  && \
-    curl -s -L "https://github.com/kubernetes-sigs/kustomize/releases/download/v1.0.6/kustomize_1.0.6_linux_amd64" > /usr/bin/kustomize && \
     curl -L -o kustomize.tar.gz "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.5.4/kustomize_v3.5.4_linux_amd64.tar.gz" && \
     tar xvzf kustomize.tar.gz && mv kustomize /usr/bin/kustomize354 && \
-    chmod +x /usr/bin/kustomize && \
     chmod +x /usr/bin/kustomize354 && \
-    gcloud version && kubectl version --client && /usr/bin/kustomize version && /usr/bin/kustomize354 version && \
+    curl -s -L "https://github.com/yanc0/untrak/releases/download/v0.1/untrak_linux_amd64_v0.1" > /usr/bin/untrak && \
+    chmod +x /usr/bin/untrak && \
+    gcloud version && kubectl version --client && /usr/bin/kustomize354 version && \
     addgroup deployer && \
     adduser deployer --disabled-password --gecos '' --ingroup 'deployer' && \
     adduser deployer sudo && \
@@ -38,4 +38,4 @@ RUN chown -R deployer:deployer /home/deployer/.ssh && \
 
 USER deployer
 WORKDIR /home/deployer
-CMD ["/usr/bin/kustomize"]
+CMD ["/usr/bin/kustomize354"]
