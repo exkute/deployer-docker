@@ -23,7 +23,7 @@ RUN apt update -y && apt upgrade -y && \
     curl -L -o kustomize.tar.gz "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.5.4/kustomize_v3.5.4_linux_amd64.tar.gz" && \
     tar xvzf kustomize.tar.gz && mv kustomize /usr/bin/kustomize354 && \
     chmod +x /usr/bin/kustomize354 && \
-    curl -s -L "https://github.com/yanc0/untrak/releases/download/v0.1/untrak_linux_amd64_v0.1" > /usr/bin/untrak && \
+    curl -s -L "https://github.com/yanc0/untrak/releases/download/v0.1.1/untrak_linux_amd64_v0.1.1" > /usr/bin/untrak && \
     chmod +x /usr/bin/untrak && \
     gcloud version && kubectl version --client && /usr/bin/kustomize354 version && \
     addgroup deployer && \
